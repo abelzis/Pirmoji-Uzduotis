@@ -86,13 +86,6 @@ void printNameFraming(string& name, int frame)
 	//end of 'print last line with asterisks'
 }
 
-//frame printing function
-void print(string lines[])
-{
-	for (int i = 0; i < 5; i++)
-		cout << lines[i] << "\n";	//print each line
-}
-
 int main()
 {
 	//variables
