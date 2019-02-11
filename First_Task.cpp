@@ -10,49 +10,80 @@ using std::string;
 //function returns true if a given name (in string format) is a man
 bool isMan(string name)
 {
-	//cout << "!!!!!!!!!!!!!" << name[name.length() - 1] << "\n";
+	//if name's last letter is 's' or 'S', the person is male
 	if (name[name.length() - 1] == 's' || name[name.length() - 1] == 'S')
 		return true;
 	return false;
 }
 
 //frame forming function
-void nameFraming(string lines[], string& name)
+void printNameFraming(string& name, int frame)
 {
 	int space_fill_amount = 11;
 	
 	//begin of 'middle line fill'
 	bool is_man = isMan(name);
 	if (is_man == true)
-	{
-		lines[2] += "* Sveikas, " + name + "! *";
 		space_fill_amount = 12;
-	}
-	else
-		lines[2] += "* Sveika, " + name + "! *";
-	//end of 'middle line fill'
 
-	//begin of 'fill first and last lines with asterisks'
-	for (int i = 0; i < 2 + space_fill_amount + name.length(); i++)
-	{
-		lines[0] += '*';
-		lines[4] += '*';
-	}
-	//end of 'fill first and last lines with asterisks'
+	//begin of 'print first line with asterisks'
+	cout << "\n";
+	for (int i = 0; i < space_fill_amount + 2*frame + name.length(); i++)
+		cout << '*';
+	cout << "\n";
+	//end of 'print first line with asterisks'
 	
-	//begin of 'second and pre-last line fill'
-	lines[1] += '*';
-	lines[3] += '*';
-	for (int i = 0; i < space_fill_amount + name.length(); i++)
+	//begin of 'print filling lines'
+	for (int i = 0; i < frame; i++)
 	{
-		lines[1] += ' ';
-		lines[3] += ' ';
+		cout << '*';
+		for (int j = 0; j < -2 + space_fill_amount + 2*frame + name.length(); j++)
+			cout << ' ';
+		cout << "*\n";
 	}
-	lines[1] += '*';
-	lines[3] += '*';
-	//end of 'second and pre-last line fill'
+	//end of 'print filling lines'
 
+	//begin of 'print middle line'
+	//if man
+	if (is_man == true)
+	{
+		cout << '*';
+		for (int i = 0; i < frame; i++)
+			cout << ' ';
+		cout << "Sveikas, " << name << "!";
+		for (int i = 0; i < frame; i++)
+			cout << " ";
+		cout << "*\n";
+	}
+	
+	//if not a man
+	else
+	{
+		cout << '*';
+		for (int i = 0; i < frame; i++)
+			cout << ' ';
+		cout << "Sveika, " << name << "!";
+		for (int i = 0; i < frame; i++)
+			cout << " ";
+		cout << "*\n";
+	}
+	//end of 'print middle line'
 
+	//begin of 'print filling lines'
+	for (int i = 0; i < frame; i++)
+	{
+		cout << '*';
+		for (int j = 0; j < -2 + space_fill_amount + 2 * frame + name.length(); j++)
+			cout << ' ';
+		cout << "*\n";
+	}
+	//end of 'print filling lines'
+
+	//begin of 'print last line with asterisks'
+	for (int i = 0; i < space_fill_amount + 2 * frame + name.length(); i++)
+		cout << '*';
+	cout << "\n";
+	//end of 'print last line with asterisks'
 }
 
 //frame printing function
@@ -65,13 +96,18 @@ void print(string lines[])
 int main()
 {
 	//variables
-	string lines[5], name;
+	string name;
+	int frame_size = 0;
 
 	//input
 	cout << "Iveskite savo varda: ";
 	cin >> name;
+	while (frame_size < 1 || frame_size > 10)
+	{
+		cout << "Iveskite remelio dydi (nuo 1 iki 10): ";
+		cin >> frame_size;
+	}
 
-	nameFraming(lines, name);	//form frame
-	print(lines);	//print the frame
+	printNameFraming(name, frame_size);	//form frame
 
 }
