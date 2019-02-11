@@ -1,8 +1,8 @@
 # Pirmoji Užduotis
-OOP pirmoji užduotis. Programa įrėmina įvestą vardą ir su juo pasisveikina.
+OOP pirmoji užduotis. Programa įrėmina įvestą žmogaus vardą ir su juo pasisveikina.
 
 # Kaip paleisti programą?
-Lengviausias būdas - tai parsisiųsti First_Task.exe failą ir jį paleisti. Parsisiųsti galite paspaudė [čia](https://github.com/abelzis/Pirmoji-Uzduotis/raw/master/First_Task.exe)
+Lengviausias būdas - tai parsisiųsti First_Task.exe failą ir jį paleisti. Parsisiųsti galite paspaudė [čia](https://github.com/abelzis/Pirmoji-Uzduotis/raw/master/First_Task.exe).
 
 # Changelog
 ### [v1.0](https://github.com/abelzis/Pirmoji-Uzduotis/releases/tag/v1.0) (2019-02-11)
