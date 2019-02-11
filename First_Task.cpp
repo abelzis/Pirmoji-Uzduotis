@@ -103,4 +103,5 @@ int main()
 
 	printNameFraming(name, frame_size);	//form frame
 
+	system("pause");
 }
