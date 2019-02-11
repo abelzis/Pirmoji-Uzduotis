@@ -7,29 +7,52 @@ using std::cout;
 using std::cin;
 using std::string;
 
+//function returns true if a given name (in string format) is a man
+bool isMan(string name)
+{
+	//cout << "!!!!!!!!!!!!!" << name[name.length() - 1] << "\n";
+	if (name[name.length() - 1] == 's' || name[name.length() - 1] == 'S')
+		return true;
+	return false;
+}
+
 //frame forming function
 void nameFraming(string lines[], string& name)
 {
-	//fill first and last lines with asterisks
-	for (int i = 0; i < 2 + 12 + name.length(); i++)
+	int space_fill_amount = 11;
+	
+	//begin of 'middle line fill'
+	bool is_man = isMan(name);
+	if (is_man == true)
+	{
+		lines[2] += "* Sveikas, " + name + "! *";
+		space_fill_amount = 12;
+	}
+	else
+		lines[2] += "* Sveika, " + name + "! *";
+	//end of 'middle line fill'
+
+	//begin of 'fill first and last lines with asterisks'
+	for (int i = 0; i < 2 + space_fill_amount + name.length(); i++)
 	{
 		lines[0] += '*';
 		lines[4] += '*';
 	}
+	//end of 'fill first and last lines with asterisks'
 	
-	//second and pre-last line fill
+	//begin of 'second and pre-last line fill'
 	lines[1] += '*';
 	lines[3] += '*';
-	for (int i = 0; i < 12 + name.length(); i++)
+	for (int i = 0; i < space_fill_amount + name.length(); i++)
 	{
 		lines[1] += ' ';
 		lines[3] += ' ';
 	}
 	lines[1] += '*';
 	lines[3] += '*';
+	//end of 'second and pre-last line fill'
 
-	//middle line fill
-	lines[2] += "* Sveikas, " + name + "! *";
+
 }
 
 //frame printing function
